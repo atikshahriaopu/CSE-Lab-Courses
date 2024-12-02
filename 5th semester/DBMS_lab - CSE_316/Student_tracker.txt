@@ -1,0 +1,59 @@
+student table:
+create table student_info(
+    student_id int PRIMARY KEY not null,
+    student_name varchar(100),
+    department varchar(100),
+    batch varchar(100),
+    section varchar(100),
+    email varchar(100),
+    phone varchar(100)
+    );
+    
+codforces info:
+CREATE table codeforces (
+    id int,
+    handle_name varchar(100),
+    total_solved int not null,
+    FOREIGN KEY (id) REFERENCES student_info(student_id)
+    on DELETE CASCADE
+    on update cascade
+    );
+atcoder info:
+CREATE table atcoder (
+    id int,
+    handle_name varchar(100),
+    total_solved int not null,
+    FOREIGN KEY (id) REFERENCES student_info(student_id)
+    on DELETE CASCADE
+    on update cascade
+    );
+codechef info:
+CREATE table codechef (
+    id int,
+    handle_name varchar(100),
+    total_solved int not null,
+    FOREIGN KEY (id) REFERENCES student_info(student_id)
+    on DELETE CASCADE
+    on update cascade
+    );
+cses info:
+CREATE table cses (
+    id int,
+    handle_name varchar(100),
+    total_solved int not null,
+    FOREIGN KEY (id) REFERENCES student_info(student_id)
+    on DELETE CASCADE
+    on update cascade
+    );
+overall:
+create table overall(
+    id int,
+    total_problem_solved int not null,
+    codeforces int not null,
+    atcoder int not null,
+    codechef int not null,
+    cses int not null,
+    FOREIGN KEY (id) REFERENCES student_info(student_id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+    );
