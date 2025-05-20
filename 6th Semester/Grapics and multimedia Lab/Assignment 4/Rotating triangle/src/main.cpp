@@ -5,7 +5,6 @@
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 
-// Global variable to track if 'A' is pressed
 bool makeGreen = false;
 
 const unsigned int SCR_WIDTH = 800;
@@ -36,7 +35,7 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Rotating Triangle", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Atik Shahria Opu", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -91,11 +90,9 @@ int main()
 
         glUseProgram(shaderProgram);
 
-        // Rotation
         float rotation = glfwGetTime();
         glUniform1f(glGetUniformLocation(shaderProgram, "rotation"), rotation);
 
-        // Color (red animation or green when 'A' is pressed)
         float redValue = static_cast<float>(sin(glfwGetTime()) / 2.0 + 0.5);
         if (makeGreen) {
             glUniform4f(glGetUniformLocation(shaderProgram, "ourColor"), 0.0f, 1.0f, 0.0f, 1.0f);
@@ -124,7 +121,7 @@ void processInput(GLFWwindow *window)
     static bool aKeyPressed = false;
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS && !aKeyPressed) {
         aKeyPressed = true;
-        makeGreen = !makeGreen; // Toggle green state
+        makeGreen = !makeGreen;
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_RELEASE) {
         aKeyPressed = false;
