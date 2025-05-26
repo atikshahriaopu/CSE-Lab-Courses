@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Recommendations - HopeHub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-hands-helping me-2"></i>HopeHub
+            </a>
+            <div class="d-flex align-items-center">
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-user-circle me-1"></i> User
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-2 bg-white sidebar p-0">
+                <div class="list-group list-group-flush">
+                    <a href="index.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <i class="fas fa-users me-2"></i>Volunteers
+                    </a>
+                    <a href="emergency.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-bell me-2"></i>Emergency Alerts
+                    </a>
+                    <a href="map.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-map-marked-alt me-2"></i>Map
+                    </a>
+                    <a href="recommendations.html" class="list-group-item list-group-item-action active">
+                        <i class="fas fa-lightbulb me-2"></i>AI Recommendations
+                    </a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-10 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="fw-bold mb-0">AI-Powered Recommendations</h2>
+                    <div class="btn-group">
+                        <button class="btn btn-outline-primary" id="refreshRecs">
+                            <i class="fas fa-sync-alt me-1"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recommendation Form -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white border-0">
+                        <h5 class="mb-0">Get Personalized Recommendations</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="recommendationForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="disasterType" class="form-label">Type of Disaster</label>
+                                    <select class="form-select" id="disasterType" required>
+                                        <option value="" selected disabled>Select disaster type</option>
+                                        <option>Cyclone</option>
+                                        <option>Flood</option>
+                                        <option>Earthquake</option>
+                                        <option>Landslide</option>
+                                        <option>Fire</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="location" class="form-label">Location</label>
+                                    <input type="text" class="form-control" id="location" placeholder="Enter location" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="disasterDetails" class="form-label">Explain About the Disaster</label>
+                                    <textarea class="form-control" id="disasterDetails" rows="4" placeholder="Provide details about the current situation, needs, challenges, etc." required></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="resourcesNeeded" class="form-label">Immediate Needs</label>
+                                    <select class="form-select" id="resourcesNeeded" multiple>
+                                        <option>Medical Personnel</option>
+                                        <option>First Aid Supplies</option>
+                                        <option>Food</option>
+                                        <option>Water</option>
+                                        <option>Shelter</option>
+                                        <option>Rescue Teams</option>
+                                        <option>Construction Volunteers</option>
+                                        <option>Transportation</option>
+                                        <option>Communication Equipment</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="timeframe" class="form-label">Timeframe</label>
+                                    <select class="form-select" id="timeframe" required>
+                                        <option value="" selected disabled>Select urgency</option>
+                                        <option>Immediate (within hours)</option>
+                                        <option>Urgent (within 1-2 days)</option>
+                                        <option>Soon (within week)</option>
+                                        <option>Ongoing</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-lightbulb me-1"></i> Get Recommendations
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="card border-0 shadow-sm" id="resultsSection" style="display: none;">
+                    <div class="card-header bg-white border-0">
+                        <h5 class="mb-0">Recommended Actions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i> These recommendations are generated by our AI based on similar past disasters and current resource availability.
+                        </div>
+                        
+                        <!-- Priority Recommendations -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold text-danger mb-3">
+                                <i class="fas fa-exclamation-triangle me-2"></i> Priority Recommendations
+                            </h6>
+                            <div class="list-group mb-3">
+                                <div class="list-group-item list-group-item-danger">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">1. Evacuate coastal areas immediately</h6>
+                                            <p class="mb-0 small">Based on cyclone path predictions, these areas will be most affected within 6 hours.</p>
+                                        </div>
+                                        <button class="btn btn-sm btn-danger">Act Now</button>
+                                    </div>
+                                </div>
+                                <div class="list-group-item list-group-item-danger">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">2. Set up emergency medical stations</h6>
+                                            <p class="mb-0 small">Predicted injury rate of 15-20% based on similar cyclones. Pre-position medical teams.</p>
+                                        </div>
+                                        <button class="btn btn-sm btn-danger">Act Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Resource Allocation -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold text-primary mb-3">
+                                <i class="fas fa-boxes me-2"></i> Resource Allocation
+                            </h6>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Medical Supplies</h6>
+                                            <p class="card-text small">Recommended allocation based on population density and predicted impact:</p>
+                                            <ul class="small">
+                                                <li>First aid kits: 250</li>
+                                                <li>Trauma kits: 50</li>
+                                                <li>IV fluids: 100 units</li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer bg-white border-0">
+                                            <button class="btn btn-sm btn-outline-primary w-100">Request Resources</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Shelter Capacity</h6>
+                                            <p class="card-text small">Recommended shelter locations and capacities:</p>
+                                            <ul class="small">
+                                                <li>Cox's Bazar School: 500 people</li>
+                                                <li>Community Center: 300 people</li>
+                                                <li>Mosque Compound: 200 people</li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer bg-white border-0">
+                                            <button class="btn btn-sm btn-outline-primary w-100">View Map</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Volunteer Deployment</h6>
+                                            <p class="card-text small">Optimal volunteer distribution:</p>
+                                            <ul class="small">
+                                                <li>Medical: 25 volunteers</li>
+                                                <li>Rescue: 15 teams</li>
+                                                <li>Logistics: 10 volunteers</li>
+                                                <li>Counseling: 5 volunteers</li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer bg-white border-0">
+                                            <button class="btn btn-sm btn-outline-primary w-100">Request Volunteers</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- NGO Matches -->
+                        <div class="mb-4">
+                            <h6 class="fw-bold text-primary mb-3">
+                                <i class="fas fa-handshake me-2"></i> Recommended NGO Partners
+                            </h6>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>NGO</th>
+                                            <th>Specialization</th>
+                                            <th>Current Capacity</th>
+                                            <th>Distance</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://via.placeholder.com/40?text=RC" class="rounded-circle me-2" width="30" height="30">
+                                                    <span>Red Crescent</span>
+                                                </div>
+                                            </td>
+                                            <td>Medical, Rescue</td>
+                                            <td>High</td>
+                                            <td>15km</td>
+                                            <td><button class="btn btn-sm btn-primary">Contact</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://via.placeholder.com/40?text=BR" class="rounded-circle me-2" width="30" height="30">
+                                                    <span>BRAC</span>
+                                                </div>
+                                            </td>
+                                            <td>Logistics, Shelter</td>
+                                            <td>Medium</td>
+                                            <td>25km</td>
+                                            <td><button class="btn btn-sm btn-primary">Contact</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="https://via.placeholder.com/40?text=UN" class="rounded-circle me-2" width="30" height="30">
+                                                    <span>UNHCR</span>
+                                                </div>
+                                            </td>
+                                            <td>Shelter, Protection</td>
+                                            <td>High</td>
+                                            <td>30km</td>
+                                            <td><button class="btn btn-sm btn-primary">Contact</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <!-- Historical Data -->
+                        <div>
+                            <h6 class="fw-bold text-primary mb-3">
+                                <i class="fas fa-chart-line me-2"></i> Insights from Similar Past Disasters
+                            </h6>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card border-0 shadow-sm h-100">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Cyclone Amphan (2020)</h6>
+                                            <p class="card-text small">Similar intensity cyclone with comparable population density:</p>
+                                            <ul class="small">
+                                                <li>Affected 2.4 million people</li>
+                                                <li>Required 150 medical teams</li>
+                                                <li>Evacuated 500,000 people</li>
+                                                <li>Key challenge: Communication breakdown</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card border-0 shadow-sm h-100">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Cyclone Fani (2019)</h6>
+                                            <p class="card-text small">Less intense but similar trajectory:</p>
+                                            <ul class="small">
+                                                <li>Affected 1.2 million people</li>
+                                                <li>Required 80 medical teams</li>
+                                                <li>Evacuated 300,000 people</li>
+                                                <li>Key success: Early warning system</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">Recommendations generated at <span id="recTimestamp">10:45 AM, June 12, 2023</span></small>
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-outline-primary">Save as PDF</button>
+                                <button class="btn btn-sm btn-outline-primary">Share with Team</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    <script>
+        // Show results when form is submitted
+        document.getElementById('recommendationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('resultsSection').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('resultsSection').scrollIntoView({
+                behavior: 'smooth'
+            });
+            
+            // Update timestamp
+            const now = new Date();
+            document.getElementById('recTimestamp').textContent = now.toLocaleString();
+        });
+    </script>
+</body>
+</html>

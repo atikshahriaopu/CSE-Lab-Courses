@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Dashboard - HopeHub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-hands-helping me-2"></i>HopeHub
+            </a>
+            <div class="d-flex align-items-center">
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-user-circle me-1"></i> NGO Admin
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-2 bg-white sidebar p-0">
+                <div class="list-group list-group-flush">
+                    <a href="ngo-dashboard.html" class="list-group-item list-group-item-action active">
+                        <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <i class="fas fa-users me-2"></i>Volunteers
+                    </a>
+                    <a href="emergency.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-bell me-2"></i>Emergency Alerts
+                    </a>
+                    <a href="map.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-map-marked-alt me-2"></i>Map
+                    </a>
+                    <a href="broadcast.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-bullhorn me-2"></i>Broadcast
+                    </a>
+                    <a href="recommendations.html" class="list-group-item list-group-item-action">
+                        <i class="fas fa-lightbulb me-2"></i>AI Recommendations
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <i class="fas fa-file-alt me-2"></i>Reports
+                    </a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-10 p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="fw-bold mb-0">NGO Dashboard</h2>
+                    <div class="btn-group">
+                        <button class="btn btn-primary">Create Alert</button>
+                        <button class="btn btn-outline-primary">Request Volunteers</button>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row g-4 mb-4">
+                    <div class="col-md-3">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="text-muted mb-2">Active Volunteers</h6>
+                                        <h3 class="mb-0">45</h3>
+                                    </div>
+                                    <div class="bg-primary bg-opacity-10 p-3 rounded">
+                                        <i class="fas fa-users text-primary"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="text-muted mb-2">Ongoing Missions</h6>
+                                        <h3 class="mb-0">7</h3>
+                                    </div>
+                                    <div class="bg-success bg-opacity-10 p-3 rounded">
+                                        <i class="fas fa-tasks text-success"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="text-muted mb-2">Emergency Alerts</h6>
+                                        <h3 class="mb-0">3</h3>
+                                    </div>
+                                    <div class="bg-danger bg-opacity-10 p-3 rounded">
+                                        <i class="fas fa-bell text-danger"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="text-muted mb-2">Resources Available</h6>
+                                        <h3 class="mb-0">82%</h3>
+                                    </div>
+                                    <div class="bg-info bg-opacity-10 p-3 rounded">
+                                        <i class="fas fa-boxes text-info"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Disasters -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white border-0">
+                        <h5 class="mb-0">Recent Disasters</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Disaster</th>
+                                        <th>Location</th>
+                                        <th>Severity</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Cyclone Mocha</td>
+                                        <td>Cox's Bazar</td>
+                                        <td><span class="badge bg-danger">High</span></td>
+                                        <td><span class="badge bg-warning">Ongoing</span></td>
+                                        <td><a href="#" class="btn btn-sm btn-outline-primary">Respond</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Floods</td>
+                                        <td>Sylhet</td>
+                                        <td><span class="badge bg-warning">Medium</span></td>
+                                        <td><span class="badge bg-success">Contained</span></td>
+                                        <td><a href="#" class="btn btn-sm btn-outline-primary">View</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Landslides</td>
+                                        <td>Chittagong</td>
+                                        <td><span class="badge bg-info">Low</span></td>
+                                        <td><span class="badge bg-success">Resolved</span></td>
+                                        <td><a href="#" class="btn btn-sm btn-outline-primary">Report</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Volunteer Requests -->
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-white border-0">
+                                <h5 class="mb-0">Volunteer Requests</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group list-group-flush">
+                                    <div class="list-group-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Medical Volunteers Needed</h6>
+                                                <small class="text-muted">Cox's Bazar - Posted 2h ago</small>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-sm btn-primary">Approve</button>
+                                                <button class="btn btn-sm btn-outline-secondary">View</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Food Distribution Team</h6>
+                                                <small class="text-muted">Sylhet - Posted 5h ago</small>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-sm btn-primary">Approve</button>
+                                                <button class="btn btn-sm btn-outline-secondary">View</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">Shelter Construction</h6>
+                                                <small class="text-muted">Chittagong - Posted 1d ago</small>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-sm btn-primary">Approve</button>
+                                                <button class="btn btn-sm btn-outline-secondary">View</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-0">
+                                <a href="#" class="btn btn-sm btn-outline-primary w-100">View All Requests</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activities -->
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-white border-0">
+                                <h5 class="mb-0">Recent Activities</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-badge bg-primary"></div>
+                                        <div class="timeline-content">
+                                            <small class="text-muted">10 minutes ago</small>
+                                            <p class="mb-0">New volunteer registration: Dr. Rahman (Medical)</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-badge bg-success"></div>
+                                        <div class="timeline-content">
+                                            <small class="text-muted">1 hour ago</small>
+                                            <p class="mb-0">Emergency alert responded in Cox's Bazar</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-badge bg-info"></div>
+                                        <div class="timeline-content">
+                                            <small class="text-muted">3 hours ago</small>
+                                            <p class="mb-0">Resource allocation updated for Sylhet floods</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-badge bg-warning"></div>
+                                        <div class="timeline-content">
+                                            <small class="text-muted">Yesterday</small>
+                                            <p class="mb-0">New disaster reported: Landslides in Chittagong</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-0">
+                                <a href="#" class="btn btn-sm btn-outline-primary w-100">View All Activities</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>

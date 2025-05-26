@@ -1,0 +1,187 @@
+/* General Styles */
+:root {
+    --primary: #0d6efd;
+    --primary-dark: #0b5ed7;
+    --secondary: #6c757d;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --danger: #dc3545;
+    --warning: #ffc107;
+    --success: #198754;
+    --info: #0dcaf0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('https://images.unsplash.com/photo-1522071901873-411886a10004?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+    background-size: cover;
+    background-position: center;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+}
+
+/* Dashboard Styles */
+.sidebar {
+    min-height: calc(100vh - 56px);
+    position: sticky;
+    top: 56px;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.list-group-item.active {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* Cards */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #e9ecef;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.timeline-badge {
+    position: absolute;
+    left: -0.5rem;
+    top: 0;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-content {
+    padding-left: 1rem;
+}
+
+/* Avatar */
+.avatar-lg {
+    width: 100px;
+    height: 100px;
+}
+
+/* Alerts */
+.alert {
+    transition: all 0.3s ease;
+}
+
+.alert:hover {
+    transform: translateX(5px);
+}
+
+/* Progress bars */
+.progress {
+    border-radius: 0.25rem;
+}
+
+/* Badges */
+.badge {
+    font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .sidebar {
+        position: static;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 50vh;
+        text-align: center;
+    }
+    
+    .hero-section .d-flex {
+        justify-content: center;
+    }
+}
+
+
+
+
+/* Admin Specific Styles */
+.list-group-item.active {
+    font-weight: 500;
+}
+
+/* Table Styles */
+.table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* Alert Colors */
+.list-group-item-danger {
+    background-color: rgba(220, 53, 69, 0.05);
+    border-left: 3px solid var(--danger);
+}
+
+.list-group-item-warning {
+    background-color: rgba(255, 193, 7, 0.05);
+    border-left: 3px solid var(--warning);
+}
+
+.list-group-item-info {
+    background-color: rgba(13, 202, 240, 0.05);
+    border-left: 3px solid var(--info);
+}
+
+/* Badge Styles */
+.badge {
+    padding: 0.35em 0.65em;
+    font-weight: 500;
+}
+
+/* Button Styles */
+.btn-outline-primary {
+    border-width: 2px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        position: static;
+        min-height: auto;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+}
