@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// ----- Drawing Functions -----
+//Drawing Functions
 
 void drawTriangle(float x1, float y1, float x2, float y2, float x3, float y3, float r, float g, float b) {
     glColor3f(r, g, b);
@@ -63,7 +63,7 @@ void drawCircle(float cx, float cy, float radius, float r, float g, float b) {
 void drawBus(float x, float y) {
   float wheelRadius = 0.07f;
   float bodyHeight = 0.35f;
-  float bodyWidth = 0.6f;  // Increased width from 0.4f to 0.6f
+  float bodyWidth = 0.6f;
 
 
   drawRect(x, y, bodyWidth, bodyHeight, 0.549f, 0.321f, 1.0f); //0.267f, 0.651f, 0.639f
@@ -89,7 +89,7 @@ void drawBus(float x, float y) {
 
 
 
-// ----- Scene -----
+//Scene
 
 float busX = -1.0f; // Starting position of the bus
 float busSpeed = 0.0001f; // Speed of the bus
@@ -126,7 +126,7 @@ void renderScene() {
     drawRect(-1.0f, -1.0f, 2.0f, 0.25f, 0.78f, 1.0f, 0.87f, false);
 }
 
-// ----- Resize -----
+//Resize
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
@@ -136,7 +136,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glMatrixMode(GL_MODELVIEW);
 }
 
-// ----- Main -----
+//Main
 
 int main() {
     if (!glfwInit()) return -1;
